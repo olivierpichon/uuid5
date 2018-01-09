@@ -1,13 +1,12 @@
-'use strict';
-let crypto = require('crypto');
+var crypto = require('crypto');
 
-let uuid5 = function(str) {
-  let out = crypto.createHash('sha1').update(str).digest();
+var uuid5 = function(str) {
+  var out = crypto.createHash('sha1').update(str).digest();
 
   out[8] = out[8] & 0x3f | 0xa0; // set variant
   out[6] = out[6] & 0x0f | 0x50; // set version
 
-  let hex = out.toString('hex', 0, 16);
+  var hex = out.toString('hex', 0, 16);
 
   return [
     hex.substring(0, 8),
